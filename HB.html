@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎂</text></svg>">
+
+<style>
+
+/* =====================================================
+   GENERAL
+===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    background: linear-gradient(
+        135deg,
+        #ff758c 0%,
+        #ff7eb3 100%
+    );
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    perspective: 1000px;
+}
+
+
+/* =====================================================
+   MAIN CARD
+===================================================== */
+
+.container {
+
+    background: rgba(255, 255, 255, 0.95);
+
+    padding: 40px 30px;
+
+    border-radius: 24px;
+
+    text-align: center;
+
+    width: 90%;
+    max-width: 550px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+
+    transition: all 0.5s ease;
+
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255,255,255,0.4);
+
+    z-index: 10;
+}
+
+
+/* =====================================================
+   HEADINGS
+===================================================== */
+
+h1 {
+
+    color: #ff0066;
+
+    font-size: 2.2rem;
+
+    margin-bottom: 20px;
+
+    text-shadow:
+        1px 1px 2px rgba(0,0,0,0.1);
+}
+
+
+/* =====================================================
+   PARAGRAPH
+===================================================== */
+
+p {
+
+    font-size: 18px;
+
+    color: #444;
+
+    line-height: 1.6;
+
+    margin: 20px 0;
+}
+
+
+/* =====================================================
+   NORMAL BUTTON
+===================================================== */
+
+button {
+
+    padding: 16px 40px;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    background:
+        linear-gradient(
+            45deg,
+            #ff0066,
+            #ff5e62
+        );
+
+    color: white;
+
+    border: none;
+
+    border-radius: 50px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 20px
+        rgba(255,0,102,0.3);
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+
+button:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 25px
+        rgba(255,0,102,0.4);
+}
+
+
+button:active {
+
+    transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   PAGE SYSTEM
+===================================================== */
+
+.page {
+
+    display: none;
+
+    animation: pageAppear 0.6s ease;
+}
+
+
+.page.active {
+
+    display: block;
+}
+
+
+@keyframes pageAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(0.9)
+            translateY(20px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+    }
+}
+
+
+/* =====================================================
+   PASSWORD PAGE
+===================================================== */
+
+.password-title {
+
+    font-size: 2rem;
+
+    margin-bottom: 10px;
+}
+
+
+.password-subtitle {
+
+    font-size: 16px;
+
+    color: #777;
+
+    margin-bottom: 25px;
+}
+
+
+/* =====================================================
+   PASSWORD DISPLAY
+===================================================== */
+
+.password-display {
+
+    width: 220px;
+
+    min-height: 55px;
+
+    margin: 0 auto 25px auto;
+
+    padding: 12px;
+
+    border-radius: 15px;
+
+    background: #fff;
+
+    border: 2px solid #ff7eb3;
+
+    box-shadow:
+        inset 0 3px 8px
+        rgba(0,0,0,0.08);
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    letter-spacing: 10px;
+
+    color: #ff0066;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    overflow: hidden;
+}
+
+
+/* Empty password display */
+
+.password-placeholder {
+
+    color: #ccc;
+
+    letter-spacing: 2px;
+
+    font-size: 15px;
+
+}
+
+
+/* =====================================================
+   CUSTOM KEYBOARD
+===================================================== */
+
+.keyboard {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 55px);
+
+    grid-auto-rows: 55px;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    margin: 10px auto 20px auto;
+}
+
+
+.key {
+
+    width: 55px;
+
+    height: 55px;
+
+    padding: 0;
+
+    border-radius: 14px;
+
+    border: none;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ff5e8a,
+            #ff0066
+        );
+
+    color: white;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 10px
+        rgba(255,0,102,0.25);
+
+    transition:
+        transform 0.12s,
+        box-shadow 0.12s;
+}
+
+
+.key:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 8px 14px
+        rgba(255,0,102,0.3);
+}
+
+
+.key:active {
+
+    transform:
+        scale(0.9);
+}
+
+
+/* =====================================================
+   DELETE BUTTON
+===================================================== */
+
+.delete-btn {
+
+    width: 120px;
+
+    height: 40px;
+
+    padding: 0;
+
+    margin-top: 5px;
+
+    border-radius: 20px;
+
+    background: #555;
+
+    font-size: 14px;
+
+    box-shadow: none;
+}
+
+
+.delete-btn:hover {
+
+    background: #333;
+
+    box-shadow: none;
+}
+
+
+/* =====================================================
+   PASSWORD ERROR
+===================================================== */
+
+.password-error {
+
+    height: 24px;
+
+    margin-top: 5px;
+
+    color: #ff1744;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    opacity: 0;
+
+    transition: opacity 0.3s;
+}
+
+
+.password-error.show {
+
+    opacity: 1;
+
+    animation: shake 0.3s;
+}
+
+
+@keyframes shake {
+
+    0%,100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-6px);
+    }
+
+    75% {
+        transform: translateX(6px);
+    }
+}
+
+
+/* =====================================================
+   NEXT PAGE
+===================================================== */
+
+.next-icon {
+
+    font-size: 65px;
+
+    animation: bounce 2s infinite;
+
+    margin-bottom: 10px;
+}
+
+
+.next-page-title {
+
+    color: #ff0066;
+
+    font-size: 2rem;
+
+    margin-bottom: 15px;
+}
+
+
+.next-page-text {
+
+    color: #555;
+
+    font-size: 18px;
+
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   DECORATIONS
+===================================================== */
+
+.decor {
+
+    font-size: 30px;
+
+    margin: 20px 0;
+
+    animation: bounce 2s infinite;
+}
+
+
+@keyframes bounce {
+
+    0%,100% {
+
+        transform:
+            translateY(0);
+    }
+
+    50% {
+
+        transform:
+            translateY(-10px);
+    }
+}
+
+
+/* =====================================================
+   BIRTHDAY PHOTO
+===================================================== */
+
+.birthday-photo {
+
+    width: 220px;
+
+    max-width: 90%;
+
+    display: block;
+
+    margin: 20px auto;
+
+    border-radius: 20px;
+
+    border: 5px solid white;
+
+    box-shadow:
+        0 10px 25px
+        rgba(0,0,0,0.3);
+
+    object-fit: cover;
+}
+
+
+/* =====================================================
+   FLOATING CONFETTI / HEARTS
+===================================================== */
+
+.confetti,
+.heart {
+
+    position: fixed;
+
+    top: -20px;
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+
+@keyframes fall {
+
+    to {
+
+        transform:
+            translateY(105vh)
+            rotate(720deg);
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 500px) {
+
+    .container {
+
+        width: 94%;
+
+        padding: 30px 18px;
+
+        max-height: 92vh;
+    }
+
+
+    h1 {
+
+        font-size: 1.7rem;
+    }
+
+
+    p {
+
+        font-size: 16px;
+    }
+
+
+    .password-title {
+
+        font-size: 1.7rem;
+    }
+
+
+    .keyboard {
+
+        grid-template-columns:
+            repeat(3, 50px);
+
+        grid-auto-rows: 50px;
+
+        gap: 8px;
+    }
+
+
+    .key {
+
+        width: 50px;
+
+        height: 50px;
+
+        font-size: 18px;
+    }
+
+
+    .password-display {
+
+        width: 200px;
+
+        min-height: 50px;
+
+        font-size: 22px;
+    }
+
+}
+
+/* =====================================================
+   PAGE 3 - PHOTOS AROUND WHITE BOX
+===================================================== */
+
+#birthdayPage {
+    position: relative;
+}
+
+/* PAGE 3 BIRTHDAY SCROLL PAPER */
+
+.birthday-paper {
+    position: relative;
+    z-index: 5;
+
+    width: 500px;
+    height: 500px;
+
+    background-image: url("images/pngtree-old-paper-scroll-in-realistic-style-for-mediaval-maps-png-image_17640049.webp");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+#birthday-text {
+    width: 300px;
+    max-height: 340px;
+
+    margin: 0;
+    padding: 10px;
+
+    font-size: 13px;
+    line-height: 1.45;
+
+    color: #4b2e18;
+
+    text-align: center;
+
+    white-space: pre-wrap;
+
+    overflow-y: auto;
+}
+
+.birthday-paper .decor {
+    display: none;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .birthday-paper {
+        width: 340px;
+        height: 340px;
+    }
+
+    #birthday-text {
+        width: 175px;
+        max-height: 205px;
+        font-size: 9px;
+        line-height: 1.4;
+    }
+}
+
+/* PAGE 3 FULL SCREEN */
+
+body.birthday-mode {
+    display: block;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+body.birthday-mode .container {
+    width: 100vw;
+    max-width: none;
+    height: 100vh;
+    max-height: none;
+
+    margin: 0;
+    padding: 0;
+
+    border-radius: 0;
+    box-shadow: none;
+
+    background: rgba(255,0,102,0.3);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body.birthday-mode #birthdayPage {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Photo frame around Page 3 */
+
+.page3-photos {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+
+    /* Allow the images to be clicked */
+    pointer-events: none;
+
+    z-index: 20;
+}
+
+.page3-photos img {
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+
+    /* MAKE PHOTOS CLICKABLE */
+    pointer-events: auto;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+/* =====================================================
+   FULL SCREEN IMAGE VIEWER
+===================================================== */
+
+.image-viewer {
+    display: none;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background: rgba(0, 0, 0, 0.92);
+
+    z-index: 9999;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.image-viewer.show {
+    display: flex;
+}
+
+.image-viewer img {
+    max-width: 95vw;
+    max-height: 95vh;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+
+    border-radius: 10px;
+
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.image-viewer-close {
+    position: absolute;
+
+    top: 20px;
+    right: 25px;
+
+    width: 50px;
+    height: 50px;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.9);
+
+    color: #333;
+
+    font-size: 30px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    z-index: 10000;
+
+    box-shadow: none;
+}
+
+.image-viewer-close:hover {
+    transform: scale(1.05);
+    box-shadow: none;
+}
+
+/* Top */
+.page3-photos .a1 {
+    top: 7%;
+    left: 25%;
+}
+
+.page3-photos .a2 {
+    top: 7%;
+    right: 25%;
+}
+
+/* Middle sides */
+.page3-photos .a3 {
+    top: 35%;
+    left: 5%;
+}
+
+.page3-photos .a4 {
+    top: 35%;
+    right: 5%;
+}
+
+.page3-photos .a5 {
+    top: 55%;
+    left: 5%;
+}
+
+.page3-photos .a6 {
+    top: 55%;
+    right: 5%;
+}
+
+/* Bottom */
+.page3-photos .a7 {
+    bottom: 20%;
+    left: 25%;
+}
+
+.page3-photos .a8 {
+    bottom: 20%;
+    right: 25%;
+}
+
+.page3-photos .a9 {
+    bottom: 11%;
+    left: 34%;
+}
+
+.page3-photos .a10 {
+    bottom: 11%;
+    right: 34%;
+}
+
+.page3-photos .a11 {
+    bottom: 1%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    .birthday-paper {
+        width: 72vw;
+        max-height: 70vh;
+        padding: 25px 20px;
+    }
+
+    .page3-photos img {
+        width: 60px;
+        height: 60px;
+        border-radius: 10px;
+    }
+
+    .page3-photos .a1 {
+        top: 5%;
+        left: 20%;
+    }
+
+    .page3-photos .a2 {
+        top: 5%;
+        right: 20%;
+    }
+
+    .page3-photos .a3 {
+        top: 32%;
+        left: 2%;
+    }
+
+    .page3-photos .a4 {
+        top: 32%;
+        right: 2%;
+    }
+
+    .page3-photos .a5 {
+        top: 52%;
+        left: 2%;
+    }
+
+    .page3-photos .a6 {
+        top: 52%;
+        right: 2%;
+    }
+
+    .page3-photos .a7 {
+        bottom: 20%;
+        left: 20%;
+    }
+
+    .page3-photos .a8 {
+        bottom: 20%;
+        right: 20%;
+    }
+
+    .page3-photos .a9 {
+        bottom: 10%;
+        left: 32%;
+    }
+
+    .page3-photos .a10 {
+        bottom: 10%;
+        right: 32%;
+    }
+
+    .page3-photos .a11 {
+        bottom: 1%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 500px) {
+
+    .top-photos {
+        gap: 5px;
+
+        margin-top: -20px;
+        margin-bottom: 15px;
+    }
+
+    .top-photos img {
+        width: 45px;
+        height: 45px;
+
+        border-radius: 10px;
+
+        border-width: 2px;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+    <audio id="birthdayAudio" src="ashifa.mp3.wav" loop></audio>
+
+
+<div class="container">
+
+
+    <!-- =================================================
+         PAGE 1 : PASSWORD
+    ================================================== -->
+
+    <div id="passwordPage" class="page active">
+
+        
+
+
+        <p class="password-subtitle">
+            Enter the secret password to continue
+        </p>
+
+
+        <!-- Password appears here -->
+
+        <div
+            id="passwordDisplay"
+            class="password-display"
+        >
+
+            <span class="password-placeholder">
+                Enter password
+            </span>
+
+        </div>
+
+
+        <!-- CUSTOM KEYBOARD -->
+
+        <div class="keyboard">
+
+
+            <!-- ROW 1 -->
+
+            <button
+                class="key"
+                onclick="pressKey('A')"
+            >
+                A
+            </button>
+
+
+            <button
+                class="key"
+                onclick="pressKey('M')"
+            >
+                M
+            </button>
+
+
+            <button
+                class="key"
+                onclick="pressKey('S')"
+            >
+                S
+            </button>
+
+
+            <!-- ROW 2 -->
+
+            <button
+                class="key"
+                onclick="pressKey('H')"
+            >
+                H
+            </button>
+
+
+            <button
+                class="key"
+                onclick="pressKey('O')"
+            >
+                O
+            </button>
+
+
+            <button
+                class="key"
+                onclick="pressKey('I')"
+            >
+                I
+            </button>
+
+
+            <!-- ROW 3 -->
+
+            <button
+                class="key"
+                onclick="pressKey('F')"
+            >
+                F
+            </button>
+
+
+            <button
+                class="key"
+                onclick="pressKey('I')"
+            >
+                I
+            </button>
+
+
+            <button
+                class="key"
+                onclick="pressKey('A')"
+            >
+                A
+            </button>
+
+
+            <!-- ROW 4 -->
+
+            <button
+                class="key"
+                onclick="pressKey('H')"
+            >
+                H
+            </button>
+
+
+            <button
+                class="key"
+                onclick="pressKey('Z')"
+            >
+                Z
+            </button>
+
+
+            <button
+                class="key"
+                onclick="pressKey('B')"
+            >
+                B
+            </button>
+
+        </div>
+
+
+        <button
+            class="delete-btn"
+            onclick="deleteKey()"
+        >
+            ⌫ Delete
+        </button>
+
+
+        <div
+            id="passwordError"
+            class="password-error"
+        >
+            Wrong password ❤️
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         PAGE 2 : AFTER PASSWORD
+    ================================================== -->
+
+    <div id="nextPage" class="page">
+
+
+        
+
+        <div class="decor">
+            🔐 🎂  🔐
+        </div>
+
+
+        <h1 class="password-title">
+            Happy Birthday 🎉
+        </h1>
+
+        <h1 class="password-title">
+    Ashifa
+</h1>
+
+
+        <p class="next-page-text">
+
+         there is still something waiting for you...
+
+        </p>
+
+
+        <div class="decor">
+            ✨ 🎁 ✨
+        </div>
+
+
+        <button onclick="openBirthdayPage()">
+
+            🎁 Continue
+
+        </button>
+
+    </div>
+
+
+
+    <!-- =================================================
+     PAGE 3 : BIRTHDAY
+================================================== -->
+
+<!-- =================================================
+     PAGE 3 : BIRTHDAY
+================================================== -->
+
+<div id="birthdayPage" class="page">
+
+    <!-- PHOTOS AROUND PAGE 3 -->
+
+    <div class="page3-photos">
+
+    <img src="images/A1.jpg" alt="A1" class="a1"
+         onclick="openImageViewer(this.src)">
+
+    <img src="images/A2.jpg" alt="A2" class="a2"
+         onclick="openImageViewer(this.src)">
+
+    <img src="images/A3.jpg" alt="A3" class="a3"
+         onclick="openImageViewer(this.src)">
+
+    <img src="images/A4.jpg" alt="A4" class="a4"
+         onclick="openImageViewer(this.src)">
+
+    <img src="images/A5.jpg" alt="A5" class="a5"
+         onclick="openImageViewer(this.src)">
+
+    <img src="images/A6.jpg" alt="A6" class="a6"
+         onclick="openImageViewer(this.src)">
+
+    <img src="images/A7.jpg" alt="A7" class="a7"
+         onclick="openImageViewer(this.src)">
+
+    <img src="images/A8.jpg" alt="A8" class="a8"
+         onclick="openImageViewer(this.src)">
+
+    <img src="images/A9.jpg" alt="A9" class="a9"
+         onclick="openImageViewer(this.src)">
+
+    <img src="images/A10.jpg" alt="A10" class="a10"
+         onclick="openImageViewer(this.src)">
+
+    <img src="images/A11.jpg" alt="A11" class="a11"
+         onclick="openImageViewer(this.src)">
+
+</div> 
+
+
+    <!-- Birthday Message Paper -->
+
+    <div class="birthday-paper">
+        <p id="birthday-text"></p>
+
+
+     <div
+        class="decor"
+        style="animation-delay: 0.5s;"
+    >
+        💖 🌸 ✨ 💙
+        </div>
+    </div>
+
+</div>
+
+
+</div>
+
+
+<!-- =====================================================
+     FULL SCREEN IMAGE VIEWER
+===================================================== -->
+
+<div
+    id="imageViewer"
+    class="image-viewer"
+    onclick="closeImageViewer()"
+>
+
+    <button
+        class="image-viewer-close"
+        onclick="closeImageViewer(event)"
+    >
+        ✕
+    </button>
+
+    <img
+        id="fullScreenImage"
+        src=""
+        alt="Full Screen Image"
+        onclick="event.stopPropagation()"
+    >
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   PASSWORD
+===================================================== */
+
+const correctPassword = "ASH";
+
+let enteredPassword = "";
+
+
+/* =====================================================
+   PASSWORD KEY PRESS
+===================================================== */
+
+function pressKey(letter) {
+
+    /*
+       Maximum password length = 3
+    */
+
+    if (enteredPassword.length >= correctPassword.length) {
+        return;
+    }
+
+
+    /*
+       Add pressed letter
+    */
+
+    enteredPassword += letter;
+
+
+    /*
+       Update display
+    */
+
+    updatePasswordDisplay();
+
+
+    /*
+       Check password
+    */
+
+    if (enteredPassword.length === correctPassword.length) {
+
+        setTimeout(function() {
+
+            if (enteredPassword === correctPassword) {
+
+                /*
+                   Correct password
+                   Move automatically to page 2
+                */
+
+                showPage("nextPage");
+
+            } else {
+
+                /*
+                   Wrong password
+                */
+
+                showWrongPassword();
+
+            }
+
+        }, 250);
+    }
+}
+
+
+
+/* =====================================================
+   UPDATE PASSWORD DISPLAY
+===================================================== */
+
+function updatePasswordDisplay() {
+
+    const display =
+        document.getElementById("passwordDisplay");
+
+
+    if (enteredPassword.length === 0) {
+
+        display.innerHTML =
+            '<span class="password-placeholder">' +
+            'Enter password' +
+            '</span>';
+
+    } else {
+
+        /*
+           Show entered letters
+        */
+
+        display.textContent =
+            enteredPassword;
+    }
+}
+
+
+
+/* =====================================================
+   DELETE LAST LETTER
+===================================================== */
+
+function deleteKey() {
+
+    if (enteredPassword.length > 0) {
+
+        enteredPassword =
+            enteredPassword.slice(0, -1);
+
+        updatePasswordDisplay();
+    }
+
+
+    /*
+       Hide error
+    */
+
+    document
+        .getElementById("passwordError")
+        .classList.remove("show");
+}
+
+
+
+/* =====================================================
+   WRONG PASSWORD
+===================================================== */
+
+function showWrongPassword() {
+
+    const error =
+        document.getElementById("passwordError");
+
+
+    error.classList.add("show");
+
+
+    /*
+       Clear password
+    */
+
+    enteredPassword = "";
+
+
+    /*
+       Update display after short delay
+    */
+
+    setTimeout(function() {
+
+        updatePasswordDisplay();
+
+    }, 400);
+}
+
+
+
+/* =====================================================
+   SHOW PAGE
+===================================================== */
+
+function showPage(pageId) {
+
+    /*
+       Hide all pages
+    */
+
+    document
+        .querySelectorAll(".page")
+        .forEach(function(page) {
+
+            page.classList.remove("active");
+
+        });
+
+
+    /*
+       Show requested page
+    */
+
+    document
+        .getElementById(pageId)
+        .classList.add("active");
+}
+
+
+
+/* =====================================================
+   PAGE 3
+===================================================== */
+
+function openBirthdayPage() {
+
+    showPage("birthdayPage");
+
+    document.body.classList.add("birthday-mode");
+
+    // Play birthday audio
+    const audio = document.getElementById("birthdayAudio");
+    audio.currentTime = 0;
+    audio.play().catch(function(error) { 
+        console.log("Audio playback was blocked:", error); });
+
+    typeWriter(message, 0);
+ 
+    createConfetti();
+
+    createHearts();
+}
+
+
+
+/* =====================================================
+   BIRTHDAY MESSAGE
+===================================================== */
+
+const message = `Happy Birthday! 🌷
+
+On your special day, I sincerely pray that Allah fills your life with endless peace, happiness, good health, and barakah. May He protect you from every hardship, guide you toward everything that is good for you, and bless every step you take.
+
+Some bonds are difficult to describe with a single word. They are simply understood through the respect, comfort, trust, and quiet care they carry. I’m genuinely grateful to have such a beautiful bond with you—one that I will always value and respect.
+
+May Allah keep your heart peaceful, your days meaningful, and your future brighter than you imagine. May every sincere dua you make find its way to you at the right time.
+
+Wishing you a beautiful birthday and a life filled with countless reasons to smile.
+
+May Allah always keep you under His protection and bless you abundantly. Ameen. 🤍`;
+
+
+
+/* =====================================================
+   TYPEWRITER
+===================================================== */
+  
+function typeWriter(text, i) {
+
+    if (i < text.length) {
+
+        document
+            .getElementById("birthday-text")
+            .innerHTML =
+            text.substring(0, i + 1) +
+            '<span aria-hidden="true">|</span>';
+
+
+        setTimeout(function() {
+
+            typeWriter(text, i + 1);
+
+        }, 35);
+
+    } else {
+
+        /*
+           Remove cursor
+        */
+
+        document
+            .getElementById("birthday-text")
+            .textContent = text;
+    }
+}
+
+
+
+/* =====================================================
+   CONFETTI
+===================================================== */
+
+function createConfetti() {
+
+    for (let i = 0; i < 100; i++) {
+
+        let c =
+            document.createElement("div");
+
+
+        c.className = "confetti";
+
+
+        c.style.width =
+            Math.random() * 12 + 8 + "px";
+
+
+        c.style.height =
+            Math.random() * 12 + 8 + "px";
+
+
+        c.style.left =
+            Math.random() * 100 + "vw";
+
+
+        c.style.backgroundColor =
+            "hsl(" +
+            Math.random() * 360 +
+            ", 100%, 60%)";
+
+
+        c.style.animation =
+            "fall " +
+            (2 + Math.random() * 3) +
+            "s linear forwards";
+
+
+        document.body.appendChild(c);
+
+
+        setTimeout(function() {
+
+            c.remove();
+
+        }, 5000);
+    }
+}
+
+
+
+/* =====================================================
+   FLOATING HEARTS
+===================================================== */
+
+function createHearts() {
+
+    for (let i = 0; i < 30; i++) {
+
+        let h =
+            document.createElement("div");
+
+
+        h.className = "heart";
+
+
+        h.innerHTML =
+            Math.random() > 0.5
+            ? "❤️"
+            : "💙";
+
+
+        h.style.fontSize =
+            Math.random() * 15 + 15 + "px";
+
+
+        h.style.left =
+            Math.random() * 100 + "vw";
+
+
+        h.style.animation =
+            "fall " +
+            (3 + Math.random() * 3) +
+            "s linear forwards";
+
+
+        h.style.animationDelay =
+            Math.random() * 1.5 + "s";
+
+
+        document.body.appendChild(h);
+
+
+        setTimeout(function() {
+
+            h.remove();
+
+        }, 6000);
+    }
+}
+
+/* =====================================================
+   FULL SCREEN IMAGE VIEWER
+===================================================== */
+
+function openImageViewer(imageSrc) {
+
+    const viewer =
+        document.getElementById("imageViewer");
+
+    const fullImage =
+        document.getElementById("fullScreenImage");
+
+    fullImage.src = imageSrc;
+
+    viewer.classList.add("show");
+}
+
+
+function closeImageViewer(event) {
+
+    if (event) {
+        event.stopPropagation();
+    }
+
+    const viewer =
+        document.getElementById("imageViewer");
+
+    const fullImage =
+        document.getElementById("fullScreenImage");
+
+    viewer.classList.remove("show");
+
+    fullImage.src = "";
+}
+
+
+/* Close with ESC */
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+
+        closeImageViewer();
+
+    }
+
+});
+
+</script>
+
+
+</body>
+
+</html>
